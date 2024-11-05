@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+      - name: Run Configure
+        run: ./configure
+      - name: Make Dependency
+        run: make depend
       - name: Polaris Full Scan
         if: ${{ github.event_name != 'pull_request' }}
         uses: synopsys-sig/synopsys-action@v1.13.0
@@ -44,9 +48,9 @@ jobs:
           # blackduck_search_depth: 2
           # blackduck_args: '--detect.diagnostic=true'
           # blackduck_config_path: '/Users/Config/application.properties'
-          # coverity_build_command: make -j
-          # coverity_clean_command: make clean && make depend
-          coverity_config_path: coverity.yml
+          coverity_build_command: make -j
+          coverity_clean_command: make clean
+          coverity_config_path: ./coverity.yml
           # coverity_args: --config-override capture.build.build-command=mvn install
       - name: Polaris PR Scan
         if: ${{ github.event_name == 'pull_request' }}
