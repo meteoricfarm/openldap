@@ -2,16 +2,14 @@ capture:
   build-command-inference: true
   emit-complementary-info: false
   encoding: US-ASCII
-  failure-threshold-percent: 0
   force-dependency-resolution: false
   minimal-classpath-emit: false
-  record-with-source: false
   security-da: true
   build:
     aspnet-compiler: true
     bazel: false
     build-command: make -j
-    clean-command: ./configure && make depend && make clean
+    clean-command: make clean
     defer-decomp: false
     instrument: false
     scan-transparency: true
@@ -31,7 +29,6 @@ analyze:
   scan-transparency: true
   checkers:
     all: false
-    all-security: true
     audit: false
     brakeman: true
     c-family-security: true
