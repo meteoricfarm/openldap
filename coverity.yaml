@@ -16,6 +16,9 @@ capture:
   compiler-configuration:
     cov-configure:
       - [--gcc]
+  languages:
+    include:
+      - c-family
 
 analyze:
   aggressiveness-level: low
