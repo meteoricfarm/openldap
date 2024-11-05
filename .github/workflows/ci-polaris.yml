@@ -1,4 +1,4 @@
-name: CI-Polaris 
+name: ci-polaris 
 on:
   push:
     branches: [ main, master, develop, stage, release ]
@@ -18,7 +18,8 @@ jobs:
           polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
           polaris_application_name: ${{ vars.APPLICATION_NAME }}
           polaris_project_name: ${{ github.event.repository.name }}
-          polaris_assessment_types: "SCA,SAST"
+          polaris_assessment_types: "SAST"
+          # polaris_assessment_types: "SCA,SAST"
           polaris_onboarding: false
           # polaris_waitForScan: false  # Used to support the async mode
           # project_directory: ${{ vars.PROJECT_DIRECTORY }}
@@ -43,9 +44,9 @@ jobs:
           # blackduck_search_depth: 2
           # blackduck_args: '--detect.diagnostic=true'
           # blackduck_config_path: '/Users/Config/application.properties'
-          coverity_build_command: make depend && make
-          coverity_clean_command: make clean
-          coverity_config_path: /Users/Config/coverity.yml
+          coverity_build_command: make -j
+          coverity_clean_command: make clean && make depend
+          # coverity_config_path: coverity.yml
           # coverity_args: --config-override capture.build.build-command=mvn install
       - name: Polaris PR Scan
         if: ${{ github.event_name == 'pull_request' }}
@@ -53,9 +54,10 @@ jobs:
         with:
           polaris_server_url: ${{ vars.POLARIS_SERVER_URL }}
           polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-          polaris_application_name: ${{ github.event.repository.name }}
+          polaris_application_name: ${{ vars.APPLICATION_NAME }}
           polaris_project_name: ${{ github.event.repository.name }}
-          polaris_assessment_types: "SCA,SAST"
+          polaris_assessment_types: "SAST"
+          # polaris_assessment_types: "SCA,SAST"
           # project_directory: ${{ vars.PROJECT_DIRECTORY }}
           ### Uncomment below configuration for source code upload 
           # polaris_assessment_mode: "SOURCE_UPLOAD"
