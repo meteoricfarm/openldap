@@ -48,9 +48,9 @@ jobs:
           # blackduck_search_depth: 2
           # blackduck_args: '--detect.diagnostic=true'
           # blackduck_config_path: '/Users/Config/application.properties'
-          coverity_build_command: make -j
-          coverity_clean_command: make clean
-          # coverity_config_path: ./coverity.yaml
+          # coverity_build_command: make -j
+          # coverity_clean_command: make clean
+          coverity_config_path: ./coverity.yaml
           # coverity_args: --config-override capture.build.build-command=mvn install
       - name: Polaris PR Scan
         if: ${{ github.event_name == 'pull_request' }}

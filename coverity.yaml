@@ -1,41 +1,11 @@
 capture:
-  build-command-inference: true
-  emit-complementary-info: false
   encoding: US-ASCII
-  force-dependency-resolution: false
-  minimal-classpath-emit: false
-  security-da: true
   build:
-    aspnet-compiler: true
-    bazel: false
     build-command: make -j
     clean-command: make clean
-    defer-decomp: false
-    instrument: false
-    scan-transparency: true
   compiler-configuration:
     cov-configure:
       - [--gcc]
   languages:
     include:
       - c-family
-
-analyze:
-  aggressiveness-level: low
-  c-cpp-fnptr: true
-  c-cpp-virtual: true
-  callgraph-metrics: true
-  constraint-fpp: true
-  location: local
-  mode: pfi
-  one-tu-per-psf: true
-  scan-transparency: true
-  checkers:
-    all: false
-    audit: false
-    brakeman: true
-    c-family-security: true
-    concurrency: true
-    default: true
-    pmd: false
-    rule: false
