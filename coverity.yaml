@@ -1,11 +1,10 @@
 capture:
-  encoding: US-ASCII
   build:
     build-command: make -j
     clean-command: make clean
   compiler-configuration:
     cov-configure:
-      - [--gcc]
+      - [--template, --compiler, cc, --comptype, gcc]
   languages:
     include:
       - c-family
