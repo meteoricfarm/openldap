@@ -1,0 +1,4 @@
+capture:
+  build:
+    clean-command: make clean && make depend
+    build-command: make -j
