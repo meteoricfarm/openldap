@@ -37,14 +37,14 @@ jobs:
           # polaris_upload_sarif_report: true 
           # github_token: ${{ secrets.GITHUB_TOKEN }} # Required when polaris_upload_sarif_report is set as true
           ### Signature scan
-          #polaris_test_sca_type: "SCA-SIGNATURE"
+          polaris_test_sca_type: "SCA-SIGNATURE"
           ### Uncomment below to add arbitrary CL parameters
           # blackduck_search_depth: 2
           # blackduck_args: '--detect.diagnostic=true'
           # blackduck_config_path: '/Users/Config/application.properties'
-          # coverity_build_command: mvn clean install
-          # coverity_clean_command: mvn clean
-          # coverity_config_path: /Users/Config/coverity.yml
+          coverity_build_command: make depend && make
+          coverity_clean_command: make clean
+          coverity_config_path: /Users/Config/coverity.yml
           # coverity_args: --config-override capture.build.build-command=mvn install
       - name: Polaris PR Scan
         if: ${{ github.event_name == 'pull_request' }}
